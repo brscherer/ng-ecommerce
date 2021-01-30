@@ -1,0 +1,112 @@
+{
+  "env": {
+    "es6": true,
+    "browser": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb-base",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended",
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["@typescript-eslint", "prettier", "import-helpers", "unused-imports", "jest", "@onviobr"],
+  "rules": {
+    "no-use-before-define": "off",
+    "no-shadow": "off",
+    "no-case-declarations": "off",
+    "no-unused-expressions": "off",
+    "no-plusplus": "off",
+    "max-classes-per-file": "off",
+    "prettier/prettier": "warn",
+    "no-underscore-dangle": "off",
+    "class-methods-use-this": "off",
+    "no-await-in-loop": "off",
+    "import/prefer-default-export": "off",
+    "no-useless-constructor": "off",
+    "global-require": "off",
+    "no-param-reassign": "off",
+    "import/no-absolute-path": "error",
+    "import/no-extraneous-dependencies": "off",
+    "import/order": "off",
+    "import/newline-after-import": "off",
+    "import/no-unresolved": "off",
+    "dot-notation": "off",
+    "no-extra-boolean-cast": "off",
+    "no-else-return": "off",
+    "default-case": "off",
+    "lines-between-class-members": ["warn", "always", { "exceptAfterSingleLine": true }],
+    "import/extensions": ["error", "ignorePackages", { "ts": "never" }],
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "always",
+        "groups": ["module", "/^src/", ["parent", "sibling", "index"]],
+        "alphabetize": {
+          "order": "asc",
+          "ignoreCase": true
+        }
+      }
+    ],
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-empty-function": "warn",
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/naming-convention": [
+      "error",
+      { "selector": "interface", "format": ["PascalCase"], "prefix": ["I"] },
+      { "selector": "enum", "format": ["PascalCase"] },
+      { "selector": "enumMember", "format": ["UPPER_CASE"] },
+      { "selector": "memberLike", "format": ["camelCase"] },
+      { "selector": "memberLike", "modifiers": ["readonly"], "format": ["UPPER_CASE"] }
+    ],
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/explicit-member-accessibility": [
+      "error",
+      { "overrides": { "accessors": "no-public", "constructors": "no-public" } }
+    ],
+    "unused-imports/no-unused-imports-ts": "error",
+    "unused-imports/no-unused-vars-ts": [
+      "warn",
+      { "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
+    ],
+    "jest/expect-expect": "error",
+    "jest/no-alias-methods": "warn",
+    "jest/no-deprecated-functions": "error",
+    "jest/no-export": "error",
+    "jest/no-identical-title": "error",
+    "jest/no-if": "error",
+    "jest/no-jest-import": "error",
+    "jest/no-large-snapshots": "error",
+    "jest/no-standalone-expect": "error",
+    "jest/no-test-return-statement": "error",
+    "jest/prefer-to-be-null": "warn",
+    "jest/prefer-to-be-undefined": "warn",
+    "jest/valid-describe": "error",
+    "jest/valid-title": "error"
+  },
+  "overrides": [
+    {
+      "files": ["*-test.ts", "*.spec.ts", "src/testing/**", "*.js"],
+      "rules": {
+        "@typescript-eslint/explicit-member-accessibility": "off",
+        "@typescript-eslint/member-ordering": "off"
+      }
+    }
+  ],
+  "settings": {
+    "import/extensions": [".ts", ".js"],
+    "import/parsers": { "@typescript-eslint/parser": [".ts", ".js"] },
+    "import/resolver": {
+      "node": { "extensions": [".ts", ".js", ".d.ts"], "paths": ["."] },
+      "typescript": "./tsconfig.json"
+    }
+  }
+}

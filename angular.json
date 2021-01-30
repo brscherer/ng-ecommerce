@@ -30,6 +30,9 @@
               "src/favicon.ico",
               "src/assets"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/base/"]
+            },
             "styles": [
               "src/styles.scss"
             ],
@@ -113,7 +116,10 @@
           "options": {
             "outputPath": "dist/ng-ecommerce/server",
             "main": "server.ts",
-            "tsConfig": "tsconfig.server.json"
+            "tsConfig": "tsconfig.server.json",
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/base/"]
+            }
           },
           "configurations": {
             "production": {
