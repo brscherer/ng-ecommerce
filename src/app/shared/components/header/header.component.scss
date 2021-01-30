@@ -1,0 +1,14 @@
+@import 'variables';
+
+:host {
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background: map-get($colors, white);
+    color: map-get($colors, black);
+    font-weight: 600;
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.15);
+  }
+}
