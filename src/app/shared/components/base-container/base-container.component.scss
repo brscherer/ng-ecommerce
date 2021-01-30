@@ -1,5 +1,116 @@
+@import 'variables';
+
+@mixin dots($count) {
+  $text-shadow: ();
+  @for $i from 0 through $count {
+    $text-shadow: $text-shadow,
+      (-0.5+ (random()) * 3) + em (-0.5+ (random()) * 3) + em 7px hsla(random() * 360, 100%, 50%, 0.9);
+  }
+  text-shadow: $text-shadow;
+}
+
+@keyframes move {
+  from {
+    transform: rotate(0deg) scale(12) translateX(-20px);
+  }
+  to {
+    transform: rotate(360deg) scale(18) translateX(20px);
+  }
+}
+
 :host {
+  min-height: 100vh;
+
+  .background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 50vh;
+    overflow: hidden;
+    background: black;
+
+    .front-dots,
+    .back-dots {
+      display: block;
+      font-size: 52px;
+      color: transparent;
+    }
+
+    .back-dots::before,
+    .back-dots::after,
+    .front-dots::before,
+    .front-dots::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 3em;
+      height: 3em;
+      content: '.';
+      mix-blend-mode: screen;
+      animation: 44s -27s move infinite ease-in-out alternate;
+    }
+
+    .front-dots::before {
+      @include dots(40);
+      animation-duration: 44s;
+      animation-delay: -27s;
+    }
+
+    .front-dots::after {
+      @include dots(40);
+      animation-duration: 43s;
+      animation-delay: -32s;
+    }
+
+    .back-dots::before {
+      @include dots(40);
+      animation-duration: 42s;
+      animation-delay: -23s;
+    }
+
+    .back-dots::after {
+      @include dots(40);
+      animation-duration: 41s;
+      animation-delay: -19s;
+    }
+  }
+
+  svg {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 4vw;
+    /* set height to pixels if you want angle to change with screen width */
+  }
+
   main {
     padding: 1rem;
+    max-width: 1140px;
+    margin: 90px auto 120px;
+    top: 15vh;
+    background: inherit;
+    right: 0;
+    left: 0;
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 10px;
+  }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    background: map-get($colors, white);
+    box-shadow: 0 -1px 8px 0 rgba(0, 0, 0, 0.15);
   }
 }
