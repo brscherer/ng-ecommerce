@@ -1,0 +1,17 @@
+@import 'variables';
+
+:host {
+  header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .showcase {
+    margin-top: 2rem;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, 257px);
+    gap: 1rem;
+  }
+}

@@ -1,0 +1,59 @@
+@import 'variables';
+
+:host {
+  .product-card {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15);
+
+    & > * {
+      margin: 1rem 0;
+    }
+
+    &__photo {
+      width: 100%;
+      height: 200px;
+
+      img {
+        border-radius: 0.25rem;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__name {
+    }
+
+    &__price {
+      font-weight: 600;
+    }
+
+    &__button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 0.25rem;
+      width: 100%;
+      padding: 0.5rem;
+      background: map-get($colors, blue);
+      color: map-get($colors, white);
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+      transform: scale(1);
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      .material-icons {
+        margin-left: 1rem;
+        font-size: 1rem;
+      }
+    }
+  }
+}

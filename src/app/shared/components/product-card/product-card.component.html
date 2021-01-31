@@ -1,0 +1,11 @@
+<div class="product-card" *ngIf="product">
+  <div class="product-card__photo">
+    <img [src]="product.photo" [alt]="product.name + 'Photo'" />
+  </div>
+  <p class="product-card__name">{{ product.name }}</p>
+  <p class="product-card__price">$ {{ product.price }}</p>
+  <button class="product-card__button" (click)="addToCart.emit(product.id)">
+    Add to cart
+    <span class="material-icons"> add_shopping_cart </span>
+  </button>
+</div>
