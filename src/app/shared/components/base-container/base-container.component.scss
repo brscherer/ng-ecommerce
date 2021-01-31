@@ -112,5 +112,10 @@
     padding: 1rem;
     background: map-get($colors, white);
     box-shadow: 0 -1px 8px 0 rgba(0, 0, 0, 0.15);
+
+    a {
+      font-weight: 600;
+      color: map-get($colors, blue);
+    }
   }
 }

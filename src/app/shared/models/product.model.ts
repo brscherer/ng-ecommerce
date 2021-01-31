@@ -4,3 +4,13 @@ export interface IProduct {
   price: string;
   photo: string;
 }
+
+export interface IProductEntities {
+  [id: string]: IProduct;
+}
+export interface ProductsState {
+  entities: IProductEntities;
+  loaded: boolean;
+  loading: boolean;
+  error: string;
+}

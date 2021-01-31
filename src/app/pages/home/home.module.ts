@@ -8,14 +8,14 @@ import { SharedModule } from './../../shared/shared.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './components/home.component';
 
-import { reducers, effects } from '../../store';
+import { showcaseReducers, effects } from '../../store';
 @NgModule({
   declarations: [HomeComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
     SharedModule,
-    StoreModule.forFeature('showcase', reducers),
+    StoreModule.forFeature('showcase', showcaseReducers),
     EffectsModule.forFeature(effects),
   ],
 })

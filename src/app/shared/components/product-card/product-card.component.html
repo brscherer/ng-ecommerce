@@ -4,7 +4,7 @@
   </div>
   <p class="product-card__name">{{ product.name }}</p>
   <p class="product-card__price">$ {{ product.price }}</p>
-  <button class="product-card__button" (click)="addToCart.emit(product.id)">
+  <button class="product-card__button" (click)="addToCart.emit(product)">
     Add to cart
     <span class="material-icons"> add_shopping_cart </span>
   </button>

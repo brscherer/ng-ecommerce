@@ -11,7 +11,7 @@ export class ProductCardComponent {
   product: IProduct | undefined;
 
   @Output()
-  addToCart = new EventEmitter<string>();
+  addToCart = new EventEmitter<IProduct>();
 
   constructor() {}
 }

@@ -1,7 +1,8 @@
+import { IProduct } from './../../../shared/models/product.model';
+import { CartActionEnum } from './../../../shared/enums/cart-actions.enum';
 import { ProductsActionEnum } from './../../../shared/enums/products-actions.enum';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IProduct } from '../../../shared/models/product.model';
 import * as fromStore from '../../../store';
 import { Store } from '@ngrx/store';
 
@@ -17,5 +18,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch({ type: ProductsActionEnum.LOAD_PRODUCTS });
+  }
+
+  onAddToCart(product: IProduct): void {
+    console.log(product);
+    this.store.dispatch({ type: CartActionEnum.ADD_PRODUCT, product });
   }
 }

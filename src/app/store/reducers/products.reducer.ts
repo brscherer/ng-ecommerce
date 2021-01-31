@@ -1,17 +1,7 @@
-import { IProduct } from './../../shared/models/product.model';
+import { IProduct, IProductEntities, ProductsState } from './../../shared/models/product.model';
 import { createReducer, on } from '@ngrx/store';
 
 import * as ProductsAction from '../actions/products.actions';
-
-interface IProductEntities {
-  [id: string]: IProduct;
-}
-export interface ProductsState {
-  entities: IProductEntities;
-  loaded: boolean;
-  loading: boolean;
-  error: string;
-}
 
 export const initialState: ProductsState = {
   entities: {},

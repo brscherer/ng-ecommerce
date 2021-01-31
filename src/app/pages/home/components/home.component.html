@@ -3,5 +3,9 @@
 </header>
 
 <div class="showcase">
-  <app-product-card *ngFor="let product of products$ | async" [product]="product"></app-product-card>
+  <app-product-card
+    *ngFor="let product of products$ | async"
+    [product]="product"
+    (addToCart)="onAddToCart($event)"
+  ></app-product-card>
 </div>
