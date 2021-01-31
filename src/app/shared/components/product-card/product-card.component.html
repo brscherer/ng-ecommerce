@@ -3,7 +3,7 @@
     <img [src]="product.photo" [alt]="product.name + 'Photo'" />
   </div>
   <p class="product-card__name">{{ product.name }}</p>
-  <p class="product-card__price">$ {{ product.price }}</p>
+  <p class="product-card__price">$ {{ product.price | number: '1.2-2' }}</p>
   <button class="product-card__button" (click)="addToCart.emit(product)">
     Add to cart
     <span class="material-icons"> add_shopping_cart </span>

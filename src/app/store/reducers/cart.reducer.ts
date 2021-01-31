@@ -16,6 +16,9 @@ export const cartReducer = createReducer(
       [product.id]: {
         ...product,
         quantity: state.entities[product.id]?.quantity ? state.entities[product.id].quantity + 1 : 1,
+        total: state.entities[product.id]?.quantity
+          ? (state.entities[product.id].quantity + 1) * product.price
+          : product.price,
       },
     },
   })),

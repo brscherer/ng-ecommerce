@@ -12,13 +12,13 @@ export const initialState: ProductsState = {
 
 export const productsReducer = createReducer(
   initialState,
-  on(ProductsAction.loadProducts, state => ({ ...state, loading: true, error: '' })),
+  on(ProductsAction.loadProducts, state => ({ ...state, loading: true, loaded: false, error: '' })),
   on(ProductsAction.loadProductsSuccess, (state, { products }) => {
     const entities: IProductEntities = products.reduce(
       (acc: IProductEntities, product) => {
         return {
           ...acc,
-          [product.id]: product,
+          [product.id]: { ...product, price: Number(product.price) },
         };
       },
       {

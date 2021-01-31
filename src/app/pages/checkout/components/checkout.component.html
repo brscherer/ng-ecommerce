@@ -1,1 +1,46 @@
-<p>checkout works!</p>
+<header>
+  <h1>Checkout</h1>
+  <a routerLink="/">
+    <span class="material-icons">arrow_back</span>
+    Products list
+  </a>
+</header>
+
+<section class="products">
+  <ng-container [ngTemplateOutlet]="!(productsLength$ | async) ? emptyState : checkoutList"></ng-container>
+</section>
+
+<ng-template #emptyState>
+  <div class="products__empty-state">
+    <span class="material-icons">sentiment_dissatisfied</span>
+    <span>Your cart is empty</span>
+    <a routerLink="/">Go to products list</a>
+  </div>
+</ng-template>
+
+<ng-template #checkoutList>
+  <table>
+    <thead>
+      <th>Product</th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>Total</th>
+    </thead>
+    <tbody>
+      <tr class="products__item" *ngFor="let product of products$ | async | keyvalue">
+        <td>
+          <figure>
+            <img [src]="product.value.photo" [alt]="product.value.name + 'Photo'" />
+          </figure>
+        </td>
+        <td data-label="Description">{{ product.value.name }}</td>
+        <td data-label="Quantity">{{ product.value.quantity }}</td>
+        <td data-label="Total">$ {{ product.value.total | number: '1.2-2' }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="products__total-value">
+    <strong>Total Value: </strong>
+    <span>$ {{ productsTotalValue$ | async | number: '1.2-2' }}</span>
+  </div>
+</ng-template>

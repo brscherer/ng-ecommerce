@@ -1,0 +1,165 @@
+@import 'variables';
+
+:host {
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    a {
+      display: flex;
+      align-items: center;
+
+      span {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+  .products {
+    background: white;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15);
+
+    &__total-value {
+      margin-top: 1rem;
+      width: 100%;
+      text-align: right;
+
+      strong {
+        color: map-get($colors, blue);
+      }
+    }
+
+    &__empty-state {
+      padding: 3rem;
+      display: flex;
+      text-align: center;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 50vh;
+
+      .material-icons {
+        font-size: 4rem;
+      }
+
+      span {
+        font-size: 2rem;
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: uppercase;
+        border: none;
+        border-radius: 0.25rem;
+        width: 12rem;
+        padding: 0.5rem;
+        margin-top: 2rem;
+        background: map-get($colors, blue);
+        color: map-get($colors, white);
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out;
+        transform: scale(1);
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+
+    table {
+      border: 1px solid #ccc;
+      border-collapse: collapse;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      table-layout: fixed;
+
+      tr {
+        background-color: #f8f8f8;
+        border: 1px solid #ddd;
+        padding: 0.35em;
+      }
+
+      th,
+      td {
+        padding: 0.625em;
+        text-align: center;
+      }
+
+      th {
+        font-size: 0.85em;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      td {
+        figure {
+          width: 100%;
+          height: 100px;
+
+          img {
+            border-radius: 0.25rem;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      padding: 1rem;
+
+      table {
+        border: 0;
+
+        thead {
+          border: none;
+          clip: rect(0 0 0 0);
+          height: 1px;
+          margin: -1px;
+          overflow: hidden;
+          padding: 0;
+          position: absolute;
+          width: 1px;
+        }
+
+        tr {
+          border-bottom: 3px solid #ddd;
+          display: block;
+          margin-bottom: 0.625em;
+        }
+
+        td {
+          border-bottom: 1px solid #ddd;
+          display: block;
+          font-size: 0.8em;
+          text-align: right;
+
+          &::before {
+            content: attr(data-label);
+            float: left;
+            font-weight: bold;
+            text-transform: uppercase;
+          }
+
+          &:last-child {
+            border-bottom: 0;
+          }
+
+          figure {
+            width: 100%;
+            height: 200px;
+          }
+        }
+      }
+    }
+  }
+}

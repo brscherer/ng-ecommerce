@@ -4,7 +4,7 @@ import { IProduct } from './product.model';
 //   quantity: number;
 // }
 
-type ICartProduct = { quantity: number } & IProduct;
+type ICartProduct = { quantity: number; total: number } & IProduct;
 
 export interface ICartProductEntities {
   [id: string]: ICartProduct;
