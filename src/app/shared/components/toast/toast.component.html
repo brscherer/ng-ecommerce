@@ -1,0 +1,4 @@
+<div class="toast" *ngFor="let toast of toasts$ | async" [ngClass]="{ success: toast.type === toastType.SUCCESS }">
+  <span>{{ toast.title }}</span>
+  <div class="toast__timer"></div>
+</div>

@@ -1,11 +1,14 @@
 import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';
-import * as fromProducts from './products.reducer';
 import * as fromCart from './cart.reducer';
+import * as fromToasts from './toast.reducer';
+import * as fromProducts from './products.reducer';
 import { CartState } from '../../shared/models/cart.model';
+import { ToastState } from '../../shared/models/toast.model';
 import { ProductsState } from '../../shared/models/product.model';
 
 export interface AppState {
   cart: CartState;
+  toast: ToastState;
 }
 export interface ShowcaseState {
   products: ProductsState;
@@ -13,6 +16,7 @@ export interface ShowcaseState {
 
 export const appState: ActionReducerMap<AppState> = {
   cart: fromCart.cartReducer,
+  toast: fromToasts.toastReducer,
 };
 
 export const showcaseReducers: ActionReducerMap<ShowcaseState> = {
@@ -21,7 +25,6 @@ export const showcaseReducers: ActionReducerMap<ShowcaseState> = {
 
 /* Products Selectors */
 export const getShowcaseState = createFeatureSelector<ShowcaseState>('showcase');
-
 export const getProductsState = createSelector(getShowcaseState, (state: ShowcaseState) => state.products);
 
 export const getProductsEntities = createSelector(getProductsState, fromProducts.getProductsEntities);
@@ -32,6 +35,12 @@ export const getProductsLoaded = createSelector(getProductsState, fromProducts.g
 export const getProductsLoading = createSelector(getProductsState, fromProducts.getProductsLoading);
 export const getProductsError = createSelector(getProductsState, fromProducts.getProductsError);
 
-/* App Selectors */
+/* Cart Selectors */
 export const getCartProducts = createSelector((state: AppState) => state.cart, fromCart.getCartProducts);
 export const getCartProductsLength = createSelector(getCartProducts, state => Object.keys(state).length);
+export const getCartProductsTotalValue = createSelector(getCartProducts, state =>
+  Object.keys(state).reduce((total, key) => total + state[key].total, 0),
+);
+
+/* Toast Selectors */
+export const getToasts = createSelector((state: AppState) => state.toast, fromToasts.getToasts);

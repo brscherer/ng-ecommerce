@@ -100,6 +100,10 @@
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border-radius: 10px;
+
+    @media screen and (max-width: 600px) {
+      padding: 2rem 1rem;
+    }
   }
 
   footer {
