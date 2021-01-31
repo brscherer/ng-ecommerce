@@ -8,7 +8,7 @@
     "airbnb-base",
     "plugin:@typescript-eslint/recommended",
     "prettier/@typescript-eslint",
-    "plugin:prettier/recommended",
+    "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -16,7 +16,7 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "plugins": ["@typescript-eslint", "prettier", "import-helpers", "unused-imports", "jest", "@onviobr"],
+  "plugins": ["@typescript-eslint", "prettier", "import-helpers", "unused-imports", "jest"],
   "rules": {
     "no-use-before-define": "off",
     "no-shadow": "off",
