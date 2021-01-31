@@ -23,9 +23,30 @@ export const cartReducer = createReducer(
     },
   })),
   on(CartAction.removeProduct, (state, { productId }) => {
-    const newState = { ...state };
-    delete newState.entities[productId];
-    return newState;
+    const entities = Object.keys(state.entities).reduce((newEntities, entity) => {
+      if (entity === productId) return newEntities;
+
+      const copyEntity = state.entities[entity];
+
+      return { ...newEntities, [copyEntity.id]: copyEntity };
+    }, {});
+    return { ...state, entities };
+  }),
+  on(CartAction.changeProductQuantity, (state, { productId, quantity }) => {
+    const entities = Object.keys(state.entities).reduce(
+      (newEntities, entity) => {
+        if (entity !== productId) return newEntities;
+
+        const copyEntity = state.entities[entity];
+
+        return {
+          ...newEntities,
+          [copyEntity.id]: { ...copyEntity, quantity: quantity || 1, total: quantity * state.entities[entity].price },
+        };
+      },
+      { ...state.entities },
+    );
+    return { ...state, entities };
   }),
 );
 

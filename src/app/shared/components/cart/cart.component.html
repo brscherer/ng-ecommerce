@@ -1,5 +1,5 @@
-<div class="cart">
+<div class="cart" [ngClass]="{ empty: !(productsLength$ | async) }">
   <span class="cart__icon material-icons"> shopping_cart </span>
 
-  <span class="cart__badge">{{ productsLength$ | async }}</span>
+  <span *ngIf="productsLength$ | async" class="cart__badge">{{ productsLength$ | async }}</span>
 </div>

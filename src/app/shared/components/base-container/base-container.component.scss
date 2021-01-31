@@ -22,14 +22,14 @@
   min-height: 100vh;
 
   .background {
-    position: absolute;
-    top: 0;
+    position: fixed;
+    top: 60px;
     right: 0;
     bottom: 0;
     left: 0;
     height: 50vh;
     overflow: hidden;
-    background: map-get($colors, blue);
+    background: black;
 
     .front-dots,
     .back-dots {
@@ -53,25 +53,25 @@
     }
 
     .front-dots::before {
-      @include dots(40);
+      @include dots(200);
       animation-duration: 44s;
       animation-delay: -27s;
     }
 
     .front-dots::after {
-      @include dots(40);
+      @include dots(200);
       animation-duration: 43s;
       animation-delay: -32s;
     }
 
     .back-dots::before {
-      @include dots(40);
+      @include dots(200);
       animation-duration: 42s;
       animation-delay: -23s;
     }
 
     .back-dots::after {
-      @include dots(40);
+      @include dots(200);
       animation-duration: 41s;
       animation-delay: -19s;
     }

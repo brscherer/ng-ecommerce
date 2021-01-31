@@ -37,9 +37,7 @@ export const getProductsError = createSelector(getProductsState, fromProducts.ge
 
 /* Cart Selectors */
 export const getCartProducts = createSelector((state: AppState) => state.cart, fromCart.getCartProducts);
-export const getCartProductsLength = createSelector(getCartProducts, state =>
-  Object.keys(state).reduce((length, key) => length + state[key].quantity, 0),
-);
+export const getCartProductsLength = createSelector(getCartProducts, state => Object.keys(state).length);
 export const getCartProductsTotalValue = createSelector(getCartProducts, state =>
   Object.keys(state).reduce((total, key) => total + state[key].total, 0),
 );

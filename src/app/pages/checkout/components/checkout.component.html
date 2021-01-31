@@ -24,18 +24,27 @@
       <th>Product</th>
       <th>Description</th>
       <th>Quantity</th>
-      <th>Total</th>
+      <th>Price</th>
+      <th>Subtotal</th>
     </thead>
     <tbody>
-      <tr class="products__item" *ngFor="let product of products$ | async | keyvalue">
+      <tr class="products__item" *ngFor="let product of products$ | async | keyvalue; trackBy: trackByProduct">
         <td>
+          <button class="products__remove material-icons" (click)="onRemoveItem(product.key)">delete</button>
           <figure>
             <img [src]="product.value.photo" [alt]="product.value.name + 'Photo'" />
           </figure>
         </td>
         <td data-label="Description">{{ product.value.name }}</td>
-        <td data-label="Quantity">{{ product.value.quantity }}</td>
-        <td data-label="Total">$ {{ product.value.total | number: '1.2-2' }}</td>
+        <td data-label="Quantity">
+          <select [ngModel]="product.value.quantity" (ngModelChange)="onChangeProductQuantity($event, product.key)">
+            <option *ngFor="let number of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" [value]="number">
+              {{ number }}
+            </option>
+          </select>
+        </td>
+        <td data-label="Price">$ {{ product.value.price | number: '1.2-2' }}</td>
+        <td data-label="Subtotal">$ {{ product.value.total | number: '1.2-2' }}</td>
       </tr>
     </tbody>
   </table>

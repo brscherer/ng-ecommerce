@@ -2,17 +2,22 @@
 
 :host {
   .cart {
-    position: relative;
-    transition: all 0.2s ease-in-out;
     cursor: pointer;
+    display: flex;
 
-    &:hover {
+    &:not(.empty) {
       color: map-get($colors, blue);
-      transform: scale(1.1);
+    }
+
+    &__icon {
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
 
     &__badge {
-      position: absolute;
       color: map-get($colors, blue);
     }
   }

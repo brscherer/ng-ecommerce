@@ -21,7 +21,6 @@ export class HomeComponent implements OnInit {
   }
 
   onAddToCart(product: IProduct): void {
-    console.log(product);
     this.store.dispatch({ type: CartActionEnum.ADD_PRODUCT, product });
   }
 }
