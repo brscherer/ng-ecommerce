@@ -13,7 +13,10 @@ export const getShowcaseState = createFeatureSelector<ShowcaseState>('showcase')
 
 export const getProductsState = createSelector(getShowcaseState, (state: ShowcaseState) => state.products);
 
-export const getAllProducts = createSelector(getProductsState, fromProducts.getProducts);
+export const getProductsEntities = createSelector(getProductsState, fromProducts.getProductsEntities);
+export const getAllProducts = createSelector(getProductsEntities, entities =>
+  Object.keys(entities).map(id => entities[id]),
+);
 export const getProductsLoaded = createSelector(getProductsState, fromProducts.getProductsLoaded);
 export const getProductsLoading = createSelector(getProductsState, fromProducts.getProductsLoading);
 export const getProductsError = createSelector(getProductsState, fromProducts.getProductsError);
