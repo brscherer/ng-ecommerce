@@ -10,14 +10,18 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: CheckoutComponent
-      }
-    ]
-  }
+        component: CheckoutComponent,
+        data: {
+          title: 'Checkout',
+          metatags: [{ name: 'description', content: 'NgEcommerce Checkout Page - Review items from your cart' }],
+        },
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class CheckoutRoutingModule { }
+export class CheckoutRoutingModule {}

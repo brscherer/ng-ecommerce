@@ -10,14 +10,20 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: HomeComponent
-      }
-    ]
-  }
+        component: HomeComponent,
+        data: {
+          title: 'Home',
+          metatags: [
+            { name: 'description', content: 'NgEcommerce Home Page - Browse for products in the best possible price!' },
+          ],
+        },
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class HomeRoutingModule { }
+export class HomeRoutingModule {}
