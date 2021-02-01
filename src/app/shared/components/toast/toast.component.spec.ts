@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideMockStore } from '@ngrx/store/testing';
 
 import { ToastComponent } from './toast.component';
 
@@ -8,9 +9,9 @@ describe('ToastComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ToastComponent ]
-    })
-    .compileComponents();
+      declarations: [ToastComponent],
+      providers: [provideMockStore({})],
+    }).compileComponents();
   });
 
   beforeEach(() => {

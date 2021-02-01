@@ -1,6 +1,7 @@
+import { IProduct } from './../../shared/models/product.model';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Inject, Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
 
@@ -8,9 +9,9 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class ProductsService {
-  constructor(private http: HttpClient) {}
+  constructor(@Inject(HttpClient) private http: HttpClient) {}
 
-  getProducts(): Observable<any> {
-    return this.http.get(environment.baseUrl);
+  getProducts(): Observable<IProduct> {
+    return this.http.get<IProduct>(environment.baseUrl);
   }
 }

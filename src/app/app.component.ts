@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { Store } from '@ngrx/store';
 import { filter } from 'rxjs/operators';
@@ -10,7 +10,11 @@ import * as fromStore from './store';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(private store: Store<fromStore.AppState>, private titleService: Title, private metaService: Meta) {}
+  constructor(
+    @Inject(Store) private store: Store<fromStore.AppState>,
+    private titleService: Title,
+    private metaService: Meta,
+  ) {}
 
   ngOnInit() {
     this.store

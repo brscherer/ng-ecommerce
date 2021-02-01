@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 
 import * as fromStore from '../../../store';
 import { IToast } from '../../models/toast.model';
@@ -15,7 +15,7 @@ import { ToastTypeEnum } from '../../enums/toast-actions.enum';
 export class ToastComponent {
   toasts$: Observable<ReadonlyArray<IToast>> = this.store.select(fromStore.getToasts);
 
-  constructor(private store: Store<fromStore.AppState>) {}
+  constructor(@Inject(Store) private store: Store<fromStore.AppState>) {}
 
   get toastType() {
     return ToastTypeEnum;
