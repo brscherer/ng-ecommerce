@@ -1,14 +1,13 @@
 import * as CartActions from './../actions/cart.actions';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { switchMap, map, catchError, delay } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { ToastActionEnum } from '../../shared/enums/toast-actions.enum';
 
 @Injectable()
 export class CartEffects {
-  addProduct$ = createEffect(() =>
+  onAddProduct$ = createEffect(() =>
     this.actions$.pipe(
       ofType(CartActions.addProduct),
       map(() => ({
@@ -19,5 +18,5 @@ export class CartEffects {
     ),
   );
 
-  constructor(private actions$: Actions) {}
+  constructor(@Inject(Actions) private actions$: Actions) {}
 }

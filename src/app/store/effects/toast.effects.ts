@@ -1,14 +1,13 @@
 import * as ToastActions from './../actions/toast.actions';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { switchMap, map, catchError, delay } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { map, delay } from 'rxjs/operators';
 import { ToastActionEnum } from '../../shared/enums/toast-actions.enum';
 
 @Injectable()
 export class ToastEffects {
-  displaySuccess$ = createEffect(() =>
+  onDisplaySuccess$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ToastActions.displaySuccess),
       delay(3000),
@@ -19,5 +18,5 @@ export class ToastEffects {
     ),
   );
 
-  constructor(private actions$: Actions) {}
+  constructor(@Inject(Actions) private actions$: Actions) {}
 }

@@ -11,7 +11,7 @@ import { environment } from '../../../environments/environment';
 export class ProductsService {
   constructor(@Inject(HttpClient) private http: HttpClient) {}
 
-  getProducts(): Observable<IProduct> {
-    return this.http.get<IProduct>(environment.baseUrl);
+  getProducts(): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>(environment.baseUrl);
   }
 }

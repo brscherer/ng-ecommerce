@@ -41,7 +41,11 @@ export const cartReducer = createReducer(
 
         return {
           ...newEntities,
-          [copyEntity.id]: { ...copyEntity, quantity: quantity || 1, total: quantity * state.entities[entity].price },
+          [copyEntity.id]: {
+            ...copyEntity,
+            quantity: quantity || 1,
+            total: quantity ? quantity * state.entities[entity].price : state.entities[entity].price,
+          },
         };
       },
       { ...state.entities },

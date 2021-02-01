@@ -1,5 +1,5 @@
 import * as ProductActions from './../actions/products.actions';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ProductsService } from './../../core/services/products.service';
 
@@ -9,7 +9,7 @@ import { ProductsActionEnum } from '../../shared/enums/products-actions.enum';
 
 @Injectable()
 export class ProductsEffects {
-  loadProducts$ = createEffect(() =>
+  onLoadProducts$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ProductActions.loadProducts),
       switchMap(() =>
@@ -29,5 +29,5 @@ export class ProductsEffects {
     ),
   );
 
-  constructor(private actions$: Actions, private service: ProductsService) {}
+  constructor(@Inject(Actions) private actions$: Actions, @Inject(ProductsService) private service: ProductsService) {}
 }
