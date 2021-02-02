@@ -1,3 +1,4 @@
+import { ToastTypeEnum } from './../../enums/toast-actions.enum';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideMockStore } from '@ngrx/store/testing';
 
@@ -22,5 +23,9 @@ describe('ToastComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should return ToastTypeEnum when call toastType getter', () => {
+    expect(component.toastType.SUCCESS).toBe(ToastTypeEnum.SUCCESS);
   });
 });

@@ -46,7 +46,7 @@ export class CustomSerializer implements fromRouter.RouterStateSerializer<Router
 
     return {
       url,
-      title: `NgEcommerce ${title ? `| ${title}` : ''}`,
+      title: `NgEcommerce${title ? ` | ${title}` : ''}`,
       metatags: metatags ?? [],
     };
   }
