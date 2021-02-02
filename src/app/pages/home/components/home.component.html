@@ -12,10 +12,14 @@
   </div>
 </header>
 
-<div class="showcase" *ngIf="products$">
+<div class="showcase" *ngIf="!(loading$ | async); else loader">
   <app-product-card
     *ngFor="let product of products$ | async"
     [product]="product"
     (addToCart)="onAddToCart($event)"
   ></app-product-card>
 </div>
+
+<ng-template #loader>
+  <div class="loader"></div>
+</ng-template>

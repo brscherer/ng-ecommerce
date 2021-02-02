@@ -1,3 +1,4 @@
+import { getProductsLoading } from './../../../store/reducers/products.reducer';
 import { IProduct } from './../../../shared/models/product.model';
 import { CartActionEnum } from './../../../shared/enums/cart-actions.enum';
 import { ProductsActionEnum } from './../../../shared/enums/products-actions.enum';
@@ -14,6 +15,7 @@ import { Store } from '@ngrx/store';
 export class HomeComponent implements OnInit {
   products$: Observable<IProduct[]> = this.store.select(fromStore.getAllProducts);
   selectedSort$: Observable<string> = this.store.select(fromStore.getProductsSort);
+  loading$: Observable<boolean> = this.store.select(fromStore.getProductsLoading);
 
   constructor(@Inject(Store) private store: Store<fromStore.ShowcaseState>) {}
 
