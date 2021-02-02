@@ -1,4 +1,4 @@
-import { IProduct, IProductEntities, ProductsState } from './../../shared/models/product.model';
+import { IProductEntities, ProductsState } from './../../shared/models/product.model';
 import { createReducer, on } from '@ngrx/store';
 
 import * as ProductsAction from '../actions/products.actions';
@@ -8,6 +8,7 @@ export const initialState: ProductsState = {
   loaded: false,
   loading: false,
   error: '',
+  sortProperty: 'name',
 };
 
 export const productsReducer = createReducer(
@@ -39,9 +40,11 @@ export const productsReducer = createReducer(
     loaded: true,
     error,
   })),
+  on(ProductsAction.sortProducts, (state, { property }) => ({ ...state, sortProperty: property })),
 );
 
 export const getProductsEntities = (state: ProductsState) => state.entities;
 export const getProductsLoading = (state: ProductsState) => state.loading;
 export const getProductsLoaded = (state: ProductsState) => state.loaded;
 export const getProductsError = (state: ProductsState) => state.error;
+export const getProductsSortProperty = (state: ProductsState) => state.sortProperty;

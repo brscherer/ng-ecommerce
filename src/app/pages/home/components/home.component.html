@@ -1,8 +1,18 @@
 <header>
   <h1>Products</h1>
+
+  <div class="showcase__sort">
+    <label for="sort">Order by:</label>
+    <select name="sort" id="sort" [ngModel]="selectedSort$ | async" (ngModelChange)="onChangeSort($event)">
+      <option value="name">A - Z</option>
+      <option value="-name">Z - A</option>
+      <option value="price">Price: Low - High</option>
+      <option value="-price">Price: High - Low</option>
+    </select>
+  </div>
 </header>
 
-<div class="showcase">
+<div class="showcase" *ngIf="products$">
   <app-product-card
     *ngFor="let product of products$ | async"
     [product]="product"

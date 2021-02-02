@@ -10,3 +10,5 @@ export const loadProductsSuccess = createAction(
   ProductsActionEnum.LOAD_PRODUCTS_SUCCESS,
   props<{ products: IProduct[] }>(),
 );
+
+export const sortProducts = createAction(ProductsActionEnum.SORT_PRODUCTS, props<{ property: string }>());

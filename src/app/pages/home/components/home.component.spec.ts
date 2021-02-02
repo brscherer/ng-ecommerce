@@ -1,11 +1,13 @@
+import { FormsModule } from '@angular/forms';
 import { ShowcaseState } from './../../../store/reducers/index';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
-import { addProduct } from '../../../store';
 import { mockProduct } from '../../../../testing/mocks';
+
+import * as fromStore from '../../../store';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -16,6 +18,7 @@ describe('HomeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HomeComponent],
+      imports: [FormsModule],
       providers: [provideMockStore({})],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
@@ -35,6 +38,11 @@ describe('HomeComponent', () => {
 
   it('should dispatch [ADD_PRODUCT] action when call [onAddToCart]', () => {
     component.onAddToCart(mockProduct);
-    expect(store.dispatch).toHaveBeenLastCalledWith(addProduct({ product: mockProduct }));
+    expect(store.dispatch).toHaveBeenLastCalledWith(fromStore.addProduct({ product: mockProduct }));
+  });
+
+  it('should dispatch [SORT_PRODUCT] action when call [onChangeSort]', () => {
+    component.onChangeSort('price');
+    expect(store.dispatch).toHaveBeenLastCalledWith(fromStore.sortProducts({ property: 'price' }));
   });
 });

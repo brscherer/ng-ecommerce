@@ -1,3 +1,4 @@
+import { initialState } from './../reducers/toast.reducer';
 import { mockProduct } from './../../../testing/mocks';
 
 import * as fromProducts from '../selectors/products.selectors';
@@ -9,6 +10,7 @@ describe('ProductsSelectors', () => {
     loaded: false,
     loading: false,
     error: '',
+    sortProperty: 'name',
   };
 
   it('should get products entities', () => {
@@ -16,7 +18,7 @@ describe('ProductsSelectors', () => {
     expect(state).toEqual(initialState.entities);
   });
   it('should get all products', () => {
-    const state = fromProducts.getAllProducts.projector(initialState.entities);
+    const state = fromProducts.getAllProducts.projector(initialState.entities, initialState.sortProperty);
     expect(state).toEqual([mockProduct]);
   });
   it('should get products loaded state value', () => {

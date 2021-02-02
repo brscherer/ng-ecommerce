@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
@@ -15,6 +16,7 @@ import { showcaseReducers, effects } from '../../store';
     CommonModule,
     HomeRoutingModule,
     SharedModule,
+    FormsModule,
     StoreModule.forFeature('showcase', showcaseReducers),
     EffectsModule.forFeature(effects),
   ],

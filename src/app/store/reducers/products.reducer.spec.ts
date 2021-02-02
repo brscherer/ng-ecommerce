@@ -54,4 +54,14 @@ describe('ProductsReducer', () => {
       expect(fromProducts.getProductsError(state)).toBe('');
     });
   });
+
+  describe('[SORT_PRODUCTS] action', () => {
+    it('should set set sort property', () => {
+      const { initialState } = fromProducts;
+      const action = fromActions.sortProducts({ property: 'price' });
+      const state = fromProducts.productsReducer(initialState, action);
+
+      expect(fromProducts.getProductsSortProperty(state)).toEqual('price');
+    });
+  });
 });

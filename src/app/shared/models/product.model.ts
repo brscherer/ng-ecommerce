@@ -13,4 +13,5 @@ export interface ProductsState {
   loaded: boolean;
   loading: boolean;
   error: string;
+  sortProperty: string;
 }

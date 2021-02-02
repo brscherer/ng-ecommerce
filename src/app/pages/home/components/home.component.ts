@@ -12,7 +12,8 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  products$: Observable<ReadonlyArray<IProduct>> = this.store.select(fromStore.getAllProducts);
+  products$: Observable<IProduct[]> = this.store.select(fromStore.getAllProducts);
+  selectedSort$: Observable<string> = this.store.select(fromStore.getProductsSort);
 
   constructor(@Inject(Store) private store: Store<fromStore.ShowcaseState>) {}
 
@@ -22,5 +23,9 @@ export class HomeComponent implements OnInit {
 
   onAddToCart(product: IProduct): void {
     this.store.dispatch({ type: CartActionEnum.ADD_PRODUCT, product });
+  }
+
+  onChangeSort(property: string) {
+    this.store.dispatch({ type: ProductsActionEnum.SORT_PRODUCTS, property });
   }
 }
